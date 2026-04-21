@@ -90,6 +90,12 @@ https://your-api-domain.com
 - `https://your-api-domain.com/api/hmm_scan`
 - `https://your-api-domain.com/api/kline`
 
+当前仓库已经内置了生产环境回退地址：
+
+- `https://stockscan.xihuxiaoyao.xyz`
+
+也就是说，即使没有单独配置 `VITE_API_BASE`，GitHub Pages 版本也会默认请求这个域名下的 API。
+
 ### 为什么不能直接填你的当前服务器地址
 
 GitHub Pages 是 `https` 页面。
@@ -144,4 +150,3 @@ Stock_Scan/
 - `Readme2.md` 保留了 HMM 方案的原始需求说明
 - `RUNNING.md` 记录了本地运行方式
 - `backend/launchd/` 是 macOS 的定时任务样例
-

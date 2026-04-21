@@ -9,13 +9,16 @@ const MARKETS = [
   { key: 'themes', label: '主题股' },
 ]
 
+const DEFAULT_PROD_API_BASE = 'https://stockscan.xihuxiaoyao.xyz'
 const RAW_API_BASE = (import.meta.env.VITE_API_BASE || '').trim()
+const FALLBACK_API_BASE = import.meta.env.PROD ? DEFAULT_PROD_API_BASE : ''
 const API_BASE = RAW_API_BASE.replace(/\/+$/, '')
+const RESOLVED_API_BASE = API_BASE || FALLBACK_API_BASE
 const THEMES_URL = new URL('themes.html', window.location.origin + import.meta.env.BASE_URL).toString()
 
 function buildApiUrl(path, params = {}) {
   const pathname = path.startsWith('/') ? path : `/${path}`
-  const base = API_BASE || window.location.origin
+  const base = RESOLVED_API_BASE || window.location.origin
   const url = new URL(`${base}${pathname}`)
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null && value !== '') {
