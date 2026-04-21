@@ -1,0 +1,26 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+backend/.venv/
+
+# Node / Vite
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Local caches / runtime artifacts
+backend/cache/
+backend/logs/
+*.log
+
+# IDE / local tooling
+.idea/
+.vscode/
+.claude/
+

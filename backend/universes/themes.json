@@ -1,0 +1,914 @@
+{
+  "name": "主题投资成分股",
+  "source": "invest-themes.netlify.app · 9 大主题去重",
+  "updated": "2026-04-19",
+  "note": "去重后的 9 大主题投资股票池, 全部美股. 每周重扫成分后手动更新.",
+  "stocks": [
+    {
+      "code": "RKLB",
+      "name": "Rocket Lab",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "SIDU",
+      "name": "Sidus Space",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "FLY",
+      "name": "Firefly Aerospace",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "RDW",
+      "name": "Redwire Space",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "LUNR",
+      "name": "Intuitive Machines",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "MDA",
+      "name": "MDA Space",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "VOYG",
+      "name": "Voyager Space",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "YSS",
+      "name": "York Space Systems",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "SPCE",
+      "name": "Virgin Galactic",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "FJET",
+      "name": "Starfighters Space",
+      "theme": "space",
+      "group": "Space Infrastructure"
+    },
+    {
+      "code": "ASTS",
+      "name": "AST SpaceMobile",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "GSAT",
+      "name": "Globalstar",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "SATS",
+      "name": "EchoStar",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "IRDM",
+      "name": "Iridium",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "ETL",
+      "name": "Eutelsat",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "TSAT",
+      "name": "Telesat",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "GILT",
+      "name": "Gilat Satellite",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "VSAT",
+      "name": "Viasat",
+      "theme": "space",
+      "group": "Satellite Communications"
+    },
+    {
+      "code": "PL",
+      "name": "Planet Labs",
+      "theme": "space",
+      "group": "Space Imaging"
+    },
+    {
+      "code": "SATL",
+      "name": "Satellogic",
+      "theme": "space",
+      "group": "Space Imaging"
+    },
+    {
+      "code": "BKSY",
+      "name": "BlackSky",
+      "theme": "space",
+      "group": "Space Imaging"
+    },
+    {
+      "code": "SPIR",
+      "name": "Spire Global",
+      "theme": "space",
+      "group": "Space Imaging"
+    },
+    {
+      "code": "CRS",
+      "name": "Carpenter Technology",
+      "theme": "space",
+      "group": "Specialty Materials"
+    },
+    {
+      "code": "MTRN",
+      "name": "Materion",
+      "theme": "space",
+      "group": "Specialty Materials"
+    },
+    {
+      "code": "HXL",
+      "name": "Hexcel",
+      "theme": "space",
+      "group": "Specialty Materials"
+    },
+    {
+      "code": "ATI",
+      "name": "ATI",
+      "theme": "space",
+      "group": "Specialty Materials"
+    },
+    {
+      "code": "GLW",
+      "name": "Corning",
+      "theme": "space",
+      "group": "Specialty Materials"
+    },
+    {
+      "code": "PKE",
+      "name": "Park Aerospace",
+      "theme": "space",
+      "group": "Specialty Materials"
+    },
+    {
+      "code": "RTX",
+      "name": "RTX Corporation",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "LMT",
+      "name": "Lockheed Martin",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "KTOS",
+      "name": "Kratos",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "LHX",
+      "name": "L3Harris",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "NOC",
+      "name": "Northrop Grumman",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "BA",
+      "name": "Boeing",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "AIR",
+      "name": "Airbus",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "HO",
+      "name": "Thales",
+      "theme": "space",
+      "group": "Aerospace & Defense"
+    },
+    {
+      "code": "TDY",
+      "name": "Teledyne",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "APH",
+      "name": "Amphenol",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "KRMN",
+      "name": "Karman Space",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "RBC",
+      "name": "RBC Bearings",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "PH",
+      "name": "Parker Hannifin",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "AME",
+      "name": "AMETEK",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "GHM",
+      "name": "Graham",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "HEI",
+      "name": "Heico",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "DCO",
+      "name": "Ducommun",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "ATRO",
+      "name": "Astronics",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "TDG",
+      "name": "TransDigm",
+      "theme": "space",
+      "group": "Space Components"
+    },
+    {
+      "code": "COHR",
+      "name": "Coherent",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "LITE",
+      "name": "Lumentum",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "FN",
+      "name": "Fabrinet",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "AAOI",
+      "name": "Applied Optoelectronics",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "CIEN",
+      "name": "Ciena",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "CRDO",
+      "name": "Credo Technology",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "IPGP",
+      "name": "IPG Photonics",
+      "theme": "photonics",
+      "group": "Optical Modules & Transceivers"
+    },
+    {
+      "code": "AVGO",
+      "name": "Broadcom",
+      "theme": "photonics",
+      "group": "Silicon Photonics & CPO"
+    },
+    {
+      "code": "MRVL",
+      "name": "Marvell",
+      "theme": "photonics",
+      "group": "Silicon Photonics & CPO"
+    },
+    {
+      "code": "NVDA",
+      "name": "NVIDIA",
+      "theme": "photonics",
+      "group": "Silicon Photonics & CPO"
+    },
+    {
+      "code": "MTSI",
+      "name": "MACOM",
+      "theme": "photonics",
+      "group": "Silicon Photonics & CPO"
+    },
+    {
+      "code": "GFS",
+      "name": "GlobalFoundries",
+      "theme": "photonics",
+      "group": "Silicon Photonics & CPO"
+    },
+    {
+      "code": "IFNNY",
+      "name": "Infineon",
+      "theme": "photonics",
+      "group": "Silicon Photonics & CPO"
+    },
+    {
+      "code": "VIAV",
+      "name": "Viavi Solutions",
+      "theme": "photonics",
+      "group": "Test Equipment & Materials"
+    },
+    {
+      "code": "IQE",
+      "name": "IQE plc",
+      "theme": "photonics",
+      "group": "Test Equipment & Materials"
+    },
+    {
+      "code": "AIXA",
+      "name": "Aixtron",
+      "theme": "photonics",
+      "group": "Test Equipment & Materials"
+    },
+    {
+      "code": "MXL",
+      "name": "MaxLinear",
+      "theme": "photonics",
+      "group": "Test Equipment & Materials"
+    },
+    {
+      "code": "AMD",
+      "name": "Advanced Micro Devices",
+      "theme": "ai",
+      "group": "Compute & Accelerators"
+    },
+    {
+      "code": "TSM",
+      "name": "TSMC",
+      "theme": "ai",
+      "group": "Compute & Accelerators"
+    },
+    {
+      "code": "INTC",
+      "name": "Intel",
+      "theme": "ai",
+      "group": "Compute & Accelerators"
+    },
+    {
+      "code": "ANET",
+      "name": "Arista Networks",
+      "theme": "ai",
+      "group": "Networking & Switching"
+    },
+    {
+      "code": "CSCO",
+      "name": "Cisco",
+      "theme": "ai",
+      "group": "Networking & Switching"
+    },
+    {
+      "code": "JNPR",
+      "name": "Juniper",
+      "theme": "ai",
+      "group": "Networking & Switching"
+    },
+    {
+      "code": "MSFT",
+      "name": "Microsoft",
+      "theme": "ai",
+      "group": "Hyperscalers & Cloud"
+    },
+    {
+      "code": "GOOGL",
+      "name": "Alphabet",
+      "theme": "ai",
+      "group": "Hyperscalers & Cloud"
+    },
+    {
+      "code": "AMZN",
+      "name": "Amazon",
+      "theme": "ai",
+      "group": "Hyperscalers & Cloud"
+    },
+    {
+      "code": "META",
+      "name": "Meta Platforms",
+      "theme": "ai",
+      "group": "Hyperscalers & Cloud"
+    },
+    {
+      "code": "ORCL",
+      "name": "Oracle",
+      "theme": "ai",
+      "group": "Hyperscalers & Cloud"
+    },
+    {
+      "code": "DLR",
+      "name": "Digital Realty",
+      "theme": "ai",
+      "group": "Data Center Physical Layer"
+    },
+    {
+      "code": "EQIX",
+      "name": "Equinix",
+      "theme": "ai",
+      "group": "Data Center Physical Layer"
+    },
+    {
+      "code": "VRT",
+      "name": "Vertiv",
+      "theme": "ai",
+      "group": "Data Center Physical Layer"
+    },
+    {
+      "code": "ETN",
+      "name": "Eaton",
+      "theme": "ai",
+      "group": "Data Center Physical Layer"
+    },
+    {
+      "code": "SMCI",
+      "name": "Super Micro",
+      "theme": "ai",
+      "group": "Data Center Physical Layer"
+    },
+    {
+      "code": "DELL",
+      "name": "Dell",
+      "theme": "ai",
+      "group": "Data Center Physical Layer"
+    },
+    {
+      "code": "MU",
+      "name": "Micron Technology",
+      "theme": "ai",
+      "group": "Memory"
+    },
+    {
+      "code": "FCX",
+      "name": "Freeport-McMoRan",
+      "theme": "critmin",
+      "group": "Copper"
+    },
+    {
+      "code": "SCCO",
+      "name": "Southern Copper",
+      "theme": "critmin",
+      "group": "Copper"
+    },
+    {
+      "code": "TECK",
+      "name": "Teck Resources",
+      "theme": "critmin",
+      "group": "Copper"
+    },
+    {
+      "code": "IE",
+      "name": "Ivanhoe Electric",
+      "theme": "critmin",
+      "group": "Copper"
+    },
+    {
+      "code": "ERO",
+      "name": "Ero Copper",
+      "theme": "critmin",
+      "group": "Copper"
+    },
+    {
+      "code": "TMQ",
+      "name": "Trilogy Metals",
+      "theme": "critmin",
+      "group": "Copper"
+    },
+    {
+      "code": "ALB",
+      "name": "Albemarle",
+      "theme": "critmin",
+      "group": "Lithium & Battery Metals"
+    },
+    {
+      "code": "SQM",
+      "name": "SQM",
+      "theme": "critmin",
+      "group": "Lithium & Battery Metals"
+    },
+    {
+      "code": "LAC",
+      "name": "Lithium Americas",
+      "theme": "critmin",
+      "group": "Lithium & Battery Metals"
+    },
+    {
+      "code": "PLL",
+      "name": "Piedmont Lithium",
+      "theme": "critmin",
+      "group": "Lithium & Battery Metals"
+    },
+    {
+      "code": "CCJ",
+      "name": "Cameco",
+      "theme": "critmin",
+      "group": "Uranium"
+    },
+    {
+      "code": "UEC",
+      "name": "Uranium Energy",
+      "theme": "critmin",
+      "group": "Uranium"
+    },
+    {
+      "code": "NXE",
+      "name": "NexGen Energy",
+      "theme": "critmin",
+      "group": "Uranium"
+    },
+    {
+      "code": "DNN",
+      "name": "Denison Mines",
+      "theme": "critmin",
+      "group": "Uranium"
+    },
+    {
+      "code": "MP",
+      "name": "MP Materials",
+      "theme": "ree",
+      "group": "Producers & Magnet Makers"
+    },
+    {
+      "code": "USAR",
+      "name": "USA Rare Earth",
+      "theme": "ree",
+      "group": "Producers & Magnet Makers"
+    },
+    {
+      "code": "UUUU",
+      "name": "Energy Fuels",
+      "theme": "ree",
+      "group": "Producers & Magnet Makers"
+    },
+    {
+      "code": "LYC",
+      "name": "Lynas Rare Earths",
+      "theme": "ree",
+      "group": "Producers & Magnet Makers"
+    },
+    {
+      "code": "NEO",
+      "name": "Neo Performance Materials",
+      "theme": "ree",
+      "group": "Producers & Magnet Makers"
+    },
+    {
+      "code": "CRML",
+      "name": "Critical Metals",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "ARRN",
+      "name": "American Rare Earths",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "NB",
+      "name": "NioCorp",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "UAMY",
+      "name": "U.S. Antimony",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "TMRC",
+      "name": "Texas Mineral Resources",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "TMC",
+      "name": "The Metals Company",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "IDR",
+      "name": "Idaho Strategic Resources",
+      "theme": "ree",
+      "group": "Developers & Explorers"
+    },
+    {
+      "code": "OLN",
+      "name": "Olin Corporation",
+      "theme": "ree",
+      "group": "Processing Support"
+    },
+    {
+      "code": "FSLR",
+      "name": "First Solar",
+      "theme": "solar",
+      "group": "U.S. Manufacturers & Inverters"
+    },
+    {
+      "code": "ENPH",
+      "name": "Enphase Energy",
+      "theme": "solar",
+      "group": "U.S. Manufacturers & Inverters"
+    },
+    {
+      "code": "SEDG",
+      "name": "SolarEdge",
+      "theme": "solar",
+      "group": "U.S. Manufacturers & Inverters"
+    },
+    {
+      "code": "ARRY",
+      "name": "Array Technologies",
+      "theme": "solar",
+      "group": "U.S. Manufacturers & Inverters"
+    },
+    {
+      "code": "SHLS",
+      "name": "Shoals Technologies",
+      "theme": "solar",
+      "group": "U.S. Manufacturers & Inverters"
+    },
+    {
+      "code": "NXT",
+      "name": "Nextracker",
+      "theme": "solar",
+      "group": "U.S. Manufacturers & Inverters"
+    },
+    {
+      "code": "RUN",
+      "name": "Sunrun",
+      "theme": "solar",
+      "group": "Installers & Residential"
+    },
+    {
+      "code": "NOVA",
+      "name": "Sunnova Energy",
+      "theme": "solar",
+      "group": "Installers & Residential"
+    },
+    {
+      "code": "SPWR",
+      "name": "SunPower",
+      "theme": "solar",
+      "group": "Installers & Residential"
+    },
+    {
+      "code": "SMR",
+      "name": "NuScale Power",
+      "theme": "nuclear",
+      "group": "SMR & Next-Gen Reactors"
+    },
+    {
+      "code": "OKLO",
+      "name": "Oklo",
+      "theme": "nuclear",
+      "group": "SMR & Next-Gen Reactors"
+    },
+    {
+      "code": "NNE",
+      "name": "Nano Nuclear Energy",
+      "theme": "nuclear",
+      "group": "SMR & Next-Gen Reactors"
+    },
+    {
+      "code": "LEU",
+      "name": "Centrus Energy",
+      "theme": "nuclear",
+      "group": "SMR & Next-Gen Reactors"
+    },
+    {
+      "code": "BWXT",
+      "name": "BWX Technologies",
+      "theme": "nuclear",
+      "group": "SMR & Next-Gen Reactors"
+    },
+    {
+      "code": "ASPI",
+      "name": "ASP Isotopes",
+      "theme": "nuclear",
+      "group": "SMR & Next-Gen Reactors"
+    },
+    {
+      "code": "CEG",
+      "name": "Constellation Energy",
+      "theme": "nuclear",
+      "group": "Utilities & Operators"
+    },
+    {
+      "code": "VST",
+      "name": "Vistra",
+      "theme": "nuclear",
+      "group": "Utilities & Operators"
+    },
+    {
+      "code": "TLN",
+      "name": "Talen Energy",
+      "theme": "nuclear",
+      "group": "Utilities & Operators"
+    },
+    {
+      "code": "PEG",
+      "name": "Public Service Enterprise",
+      "theme": "nuclear",
+      "group": "Utilities & Operators"
+    },
+    {
+      "code": "D",
+      "name": "Dominion Energy",
+      "theme": "nuclear",
+      "group": "Utilities & Operators"
+    },
+    {
+      "code": "QCOM",
+      "name": "Qualcomm",
+      "theme": "semi",
+      "group": "Chip Design & Platforms"
+    },
+    {
+      "code": "ARM",
+      "name": "Arm Holdings",
+      "theme": "semi",
+      "group": "Chip Design & Platforms"
+    },
+    {
+      "code": "UMC",
+      "name": "United Microelectronics",
+      "theme": "semi",
+      "group": "Foundry"
+    },
+    {
+      "code": "ASML",
+      "name": "ASML",
+      "theme": "semi",
+      "group": "Equipment"
+    },
+    {
+      "code": "AMAT",
+      "name": "Applied Materials",
+      "theme": "semi",
+      "group": "Equipment"
+    },
+    {
+      "code": "LRCX",
+      "name": "Lam Research",
+      "theme": "semi",
+      "group": "Equipment"
+    },
+    {
+      "code": "KLAC",
+      "name": "KLA",
+      "theme": "semi",
+      "group": "Equipment"
+    },
+    {
+      "code": "TER",
+      "name": "Teradyne",
+      "theme": "semi",
+      "group": "Equipment"
+    },
+    {
+      "code": "TXN",
+      "name": "Texas Instruments",
+      "theme": "semi",
+      "group": "Analog & Specialty"
+    },
+    {
+      "code": "ADI",
+      "name": "Analog Devices",
+      "theme": "semi",
+      "group": "Analog & Specialty"
+    },
+    {
+      "code": "MCHP",
+      "name": "Microchip",
+      "theme": "semi",
+      "group": "Analog & Specialty"
+    },
+    {
+      "code": "NXPI",
+      "name": "NXP Semiconductors",
+      "theme": "semi",
+      "group": "Analog & Specialty"
+    },
+    {
+      "code": "ON",
+      "name": "ON Semiconductor",
+      "theme": "semi",
+      "group": "Analog & Specialty"
+    },
+    {
+      "code": "TSLA",
+      "name": "Tesla",
+      "theme": "robots",
+      "group": "OEMs & Platforms"
+    },
+    {
+      "code": "RR",
+      "name": "Richtech Robotics",
+      "theme": "robots",
+      "group": "OEMs & Platforms"
+    },
+    {
+      "code": "SERV",
+      "name": "Serve Robotics",
+      "theme": "robots",
+      "group": "OEMs & Platforms"
+    },
+    {
+      "code": "ROK",
+      "name": "Rockwell Automation",
+      "theme": "robots",
+      "group": "Components & Actuators"
+    },
+    {
+      "code": "SYM",
+      "name": "Symbotic",
+      "theme": "robots",
+      "group": "Components & Actuators"
+    },
+    {
+      "code": "AMBA",
+      "name": "Ambarella",
+      "theme": "robots",
+      "group": "Vision & Sensing"
+    },
+    {
+      "code": "OUST",
+      "name": "Ouster",
+      "theme": "robots",
+      "group": "Vision & Sensing"
+    },
+    {
+      "code": "HSAI",
+      "name": "Hesai Group",
+      "theme": "robots",
+      "group": "Vision & Sensing"
+    },
+    {
+      "code": "MBLY",
+      "name": "Mobileye",
+      "theme": "robots",
+      "group": "Vision & Sensing"
+    }
+  ]
+}

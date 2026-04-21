@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  A 股盘后缓存刷新 + 双扫描.
+  运行时间: 每日本地时间 09:30 (≈ A 股收盘 15:00 CST +30 分钟, 假设系统 TZ=CEST/CET)
+  如系统时区不同, 请修改 StartCalendarInterval 的 Hour/Minute.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stocks_scan.warm.a</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/robin/Documents/Stocks_Scan/backend/.venv/bin/python</string>
+        <string>/Users/robin/Documents/Stocks_Scan/backend/warm.py</string>
+        <string>--market</string>
+        <string>a</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/robin/Documents/Stocks_Scan/backend</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/robin/Documents/Stocks_Scan/backend/logs/warm.a.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/robin/Documents/Stocks_Scan/backend/logs/warm.a.err.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+        <key>STOCKS_SCAN_CACHE</key>
+        <string>/Users/robin/Documents/Stocks_Scan/backend/cache</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

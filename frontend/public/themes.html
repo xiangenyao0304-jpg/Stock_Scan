@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thematic Portfolios · 主题投资</title>
+<meta name="description" content="引领市场的主要主题投资名单。光电子、AI、太空、稀土、核能、半导体、人形机器人等九大主题核心标的。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0e0e10;
+    --bg-elev: #17171b;
+    --ink: #f4f1ea;
+    --ink-dim: #8a877f;
+    --ink-faint: #4a4843;
+    --accent: #d4a24c;
+    --line: #26252a;
+  }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', 'Noto Serif SC', Georgia, serif;
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body {
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(212, 162, 76, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(201, 74, 59, 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+  .grain {
+    position: fixed; inset: 0; pointer-events: none;
+    opacity: 0.035; z-index: 100;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 80px 48px 120px; }
+
+  header.masthead {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px; margin-bottom: 56px;
+    display: flex; justify-content: space-between;
+    align-items: flex-end; flex-wrap: wrap; gap: 24px;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+  h1.title {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(48px, 7vw, 88px); line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+  }
+  h1 .italic { font-style: italic; font-weight: 400; color: var(--accent); }
+  .subtitle {
+    font-family: 'Noto Serif SC', serif; font-weight: 300;
+    color: var(--ink-dim); font-size: 15px;
+    margin-top: 16px; max-width: 460px; line-height: 1.6;
+  }
+  .masthead-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--ink-dim);
+    text-align: right; line-height: 1.8;
+  }
+  .masthead-right .num { color: var(--accent); font-weight: 500; }
+
+  .themes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+  }
+  .theme-btn {
+    background: var(--bg-elev); border: none; color: var(--ink);
+    padding: 36px 28px 32px; text-align: left; cursor: pointer;
+    position: relative; transition: background 0.4s ease;
+    font-family: inherit; overflow: hidden; min-height: 200px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .theme-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 50%, rgba(212, 162, 76, 0.04) 100%);
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .theme-btn:hover { background: #1d1d22; }
+  .theme-btn:hover::before { opacity: 1; }
+  .theme-btn.active { background: #1d1d22; box-shadow: inset 0 0 0 1px var(--accent); }
+  .theme-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .theme-name {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 26px; letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .theme-name .zh {
+    display: block; font-family: 'Noto Serif SC', serif;
+    font-size: 14px; font-weight: 400; color: var(--ink-dim);
+    margin-top: 6px; letter-spacing: 0.05em;
+  }
+  .theme-tagline {
+    font-family: 'Noto Serif SC', serif; font-size: 12px;
+    font-weight: 300; color: var(--ink-dim);
+    line-height: 1.5; margin-top: 16px;
+  }
+  .theme-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--ink-faint); letter-spacing: 0.1em;
+  }
+  .theme-count { color: var(--ink-dim); }
+  .theme-arrow {
+    position: absolute; top: 28px; right: 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    color: var(--ink-faint);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .theme-btn:hover .theme-arrow {
+    color: var(--accent); transform: translate(4px, -4px);
+  }
+
+  .backdrop {
+    position: fixed; inset: 0;
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s ease; z-index: 50;
+  }
+  .backdrop.open { opacity: 1; pointer-events: auto; }
+  .panel {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -48%);
+    width: min(960px, calc(100vw - 48px));
+    max-height: 88vh;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    z-index: 60; opacity: 0; pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .panel.open {
+    opacity: 1; pointer-events: auto;
+    transform: translate(-50%, -50%);
+  }
+  .panel-header {
+    padding: 32px 40px 24px;
+    border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 24px;
+  }
+  .panel-header-left { flex: 1; }
+  .panel-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .panel-title {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 34px; letter-spacing: -0.015em; line-height: 1.05;
+  }
+  .panel-intro {
+    font-family: 'Noto Serif SC', serif; font-weight: 300;
+    color: var(--ink-dim); font-size: 14px;
+    margin-top: 10px; line-height: 1.65;
+    max-width: 640px; letter-spacing: 0.02em;
+  }
+  .panel-close {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-dim); width: 36px; height: 36px;
+    cursor: pointer; font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; transition: all 0.2s ease; flex-shrink: 0;
+  }
+  .panel-close:hover { border-color: var(--accent); color: var(--accent); }
+  .panel-body { padding: 28px 40px 40px; overflow-y: auto; flex: 1; }
+  .panel-body::-webkit-scrollbar { width: 6px; }
+  .panel-body::-webkit-scrollbar-track { background: transparent; }
+  .panel-body::-webkit-scrollbar-thumb { background: var(--line); }
+
+  .category { margin-bottom: 36px; }
+  .category:last-child { margin-bottom: 0; }
+  .category-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .category-zh {
+    font-family: 'Noto Serif SC', serif; font-size: 13px;
+    color: var(--ink-dim); margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+    font-weight: 300; line-height: 1.6;
+  }
+  .tickers {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ticker {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    padding: 12px 12px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s ease;
+    align-items: start;
+  }
+  .ticker:last-child { border-bottom: none; }
+  .ticker:hover { background: rgba(212, 162, 76, 0.04); }
+  .ticker-sym {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700; font-size: 13px;
+    color: var(--accent); letter-spacing: 0.02em;
+    padding-top: 2px;
+  }
+  .ticker-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .ticker-name {
+    font-family: 'Fraunces', serif; font-size: 15px;
+    color: var(--ink); font-weight: 400;
+    line-height: 1.2;
+  }
+  .ticker-desc {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px; font-weight: 300;
+    color: var(--ink-dim);
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+  }
+
+  footer {
+    margin-top: 100px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em;
+    color: var(--ink-faint); text-transform: uppercase;
+  }
+  footer .disclaimer {
+    font-family: 'Noto Serif SC', serif; font-size: 10px;
+    color: var(--ink-faint); letter-spacing: 0.08em;
+    text-transform: none; max-width: 400px;
+    text-align: right; line-height: 1.6;
+  }
+
+  .theme-btn {
+    opacity: 0;
+    animation: riseIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  }
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 720px) {
+    .container { padding: 48px 20px 80px; }
+    .themes-grid { grid-template-columns: 1fr; }
+    .panel-header, .panel-body { padding: 24px; }
+    .panel-title { font-size: 26px; }
+    footer { flex-direction: column; gap: 12px; }
+    footer .disclaimer { text-align: left; max-width: 100%; }
+    .ticker { grid-template-columns: 70px 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="eyebrow">Thematic Portfolios · 主题投资研究</div>
+      <h1 class="title">The Major <span class="italic">Themes</span><br>Leading the Market</h1>
+      <p class="subtitle">引领市场的主要主题。点击任意卡片查看标的名单与简要介绍。</p>
+    </div>
+    <div class="masthead-right">
+      <div><span class="num" id="themeCount">09</span> Themes</div>
+      <div><span class="num" id="tickerCount">0</span> Tickers</div>
+      <div style="margin-top:8px; color: var(--ink-faint);">For research only</div>
+    </div>
+  </header>
+
+  <div class="themes-grid" id="grid"></div>
+
+  <footer>
+    <div>© Thematic Research · Curated by Pro. AI</div>
+    <div class="disclaimer">仅供研究参考,不构成投资建议。名单按分类罗列,不代表优先顺序。</div>
+  </footer>
+</div>
+
+<div class="backdrop" id="backdrop"></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+  <div class="panel-header">
+    <div class="panel-header-left">
+      <div class="panel-eyebrow" id="panelEyebrow">Theme / 01</div>
+      <div class="panel-title" id="panelTitle">Theme Name</div>
+      <div class="panel-intro" id="panelIntro">主题中文名</div>
+    </div>
+    <button class="panel-close" id="panelClose" aria-label="Close">✕</button>
+  </div>
+  <div class="panel-body" id="panelBody"></div>
+</div>
+
+<script>
+// Each ticker: [symbol, company name, one-line Chinese description]
+const themes = [
+  { key:'space', name:'Space', zh:'太空经济', tagline:'The Multiplanetary Future · 多行星未来',
+    intro:'SpaceX IPO 将引爆万亿级太空竞赛。发射、卫星通信、对地观测、特种材料、防务集成与零部件构成完整产业链,受益于发射频次提升与星座部署加速。',
+    groups:[
+      { en:'Space Infrastructure', zh:'太空基础设施 · 发射平台与服务,直接受益于发射频次提升与星座部署',
+        tickers:[
+          ['RKLB','Rocket Lab','小运载火箭与卫星整机厂,Electron 商业化成熟,Neutron 对标猎鹰 9'],
+          ['SIDU','Sidus Space','小卫星制造与数据服务,FSS 模式,轻资产'],
+          ['FLY','Firefly Aerospace','中小型运载与月球着陆器,Alpha 火箭运营中,Blue Ghost 登月任务'],
+          ['RDW','Redwire Space','在轨制造、太阳能板、基础设施,NASA 核心供应商'],
+          ['LUNR','Intuitive Machines','月球着陆器运营商,CLPS 任务主力承包方'],
+          ['MDA','MDA Space','加拿大卫星系统与机械臂,遗产客户是 NASA 与欧航局'],
+          ['VOYG','Voyager Space','空间站商业化运营,与 NASA 合作的 Starlab 项目'],
+          ['YSS','York Space Systems','小卫星平台,军方与商业客户,标准化快速制造'],
+          ['SPCE','Virgin Galactic','亚轨道太空旅游,商业飞行业务仍在爬坡'],
+          ['FJET','Starfighters Space','超音速发射平台,高空空中发射概念'],
+        ]},
+      { en:'Satellite Communications', zh:'卫星通信 · 低轨宽带与直连手机,网络效应与频谱壁垒显著',
+        tickers:[
+          ['ASTS','AST SpaceMobile','直连普通手机的低轨宽带,合作对象包括 AT&T、Verizon'],
+          ['GSAT','Globalstar','L 波段频谱,苹果卫星应急业务独家合作方'],
+          ['SATS','EchoStar','卫星通信与地面 5G 频谱资产双重故事'],
+          ['IRDM','Iridium','全球低轨通信老牌,物联网与政府业务稳定现金流'],
+          ['ETL','Eutelsat','欧洲 GEO 与 LEO 合并体,OneWeb 星座运营方'],
+          ['TSAT','Telesat','加拿大老牌卫星运营商,Lightspeed 低轨星座建设中'],
+          ['GILT','Gilat Satellite','地面终端与基带设备,卫星通信卖水人'],
+          ['VSAT','Viasat','宽带卫星与政府通信,合并 Inmarsat 后整合中'],
+        ]},
+      { en:'Space Imaging', zh:'对地观测 · 数据订阅模式,军政与商业双轨需求',
+        tickers:[
+          ['PL','Planet Labs','对地观测星座最大商业运营方,日均扫描全球'],
+          ['SATL','Satellogic','高分辨率商业遥感,订阅制数据服务'],
+          ['BKSY','BlackSky','小时级更新对地观测,政府与国防客户为主'],
+          ['SPIR','Spire Global','射频遥感,气象、船舶、航空追踪数据'],
+        ]},
+      { en:'Specialty Materials', zh:'特种材料 · 航空合金、复合材料、玻璃,高壁垒供应环节',
+        tickers:[
+          ['CRS','Carpenter Technology','特种合金与高温钢,航空发动机核心材料'],
+          ['MTRN','Materion','先进材料与铍合金,航天防务与半导体两栖'],
+          ['HXL','Hexcel','碳纤维复合材料龙头,波音空客长期供应商'],
+          ['ATI','ATI','钛合金与镍基合金,航空级金属材料'],
+          ['GLW','Corning','特种玻璃与光纤,覆盖通信与航天光学'],
+          ['PKE','Park Aerospace','航空级复合材料与粘合剂'],
+        ]},
+      { en:'Aerospace & Defense', zh:'航空航天与防务 · 系统集成大厂,长订单周期,政府采购确定性',
+        tickers:[
+          ['RTX','RTX Corporation','普惠发动机 + 柯林斯航电 + 雷神防务三位一体'],
+          ['LMT','Lockheed Martin','F-35、导弹、卫星系统,国防部最大承包商'],
+          ['KTOS','Kratos','无人机与超音速靶弹,小承包商成长股'],
+          ['LHX','L3Harris','通信与传感器,深度绑定情报与太空部队'],
+          ['NOC','Northrop Grumman','B-21 轰炸机、导弹防御、空间系统'],
+          ['BA','Boeing','商用飞机 + 防务 + 航天,周期与转型交织'],
+          ['AIR','Airbus','商用飞机双寡头之一,空间业务欧洲核心'],
+          ['HO','Thales','法国防务电子与航天系统集成商'],
+        ]},
+      { en:'Space Components', zh:'太空零部件 · 连接器、传感器、轴承等卡脖子环节,定价权强',
+        tickers:[
+          ['TDY','Teledyne','传感器、成像、测试仪器,防务科学细分龙头'],
+          ['APH','Amphenol','连接器全球龙头,航天与工业终端广泛覆盖'],
+          ['KRMN','Karman Space','火箭与导弹结构件,发射段直接受益'],
+          ['RBC','RBC Bearings','高精度轴承,航空与防务应用为主'],
+          ['PH','Parker Hannifin','流体控制与运动控制,航天液压系统供应商'],
+          ['AME','AMETEK','电子仪表与精密部件,航天测试细分高利润'],
+          ['GHM','Graham','真空与热传导设备,海军与航天两栖'],
+          ['HEI','Heico','售后航空零部件,高 ROIC 复利典范'],
+          ['DCO','Ducommun','防务电子与结构件,小市值专业供应商'],
+          ['ATRO','Astronics','飞机电子系统与测试设备'],
+          ['TDG','TransDigm','航空售后专有零部件,定价权与并购双引擎'],
+        ]}
+    ]
+  },
+
+  { key:'photonics', name:'Photonics', zh:'光电子', tagline:'The Speed of Light · 光的速度',
+    intro:'数据中心互联从电转光,800G 向 1.6T 升级周期。铜互联的物理天花板打开光模块、硅光、EML 激光器与代工的长期需求。',
+    groups:[
+      { en:'Optical Modules & Transceivers', zh:'光模块 · AI 集群东西向流量爆发,800G / 1.6T 升级红利',
+        tickers:[
+          ['COHR','Coherent','激光器与光通信龙头,EML 与 InP 材料话语权'],
+          ['LITE','Lumentum','200G/lane EML 独家量产商,英伟达多年协议签约方'],
+          ['FN','Fabrinet','光模块代工巨头,为众多光电大厂提供精密组装'],
+          ['AAOI','Applied Optoelectronics','微软大单获得者,光模块与数据中心转型中'],
+          ['CIEN','Ciena','高端光传输设备,长途 + 数据中心互联'],
+          ['CRDO','Credo Technology','AEC 有源铜缆与 DSP,收购 DustPhotonics 切入硅光'],
+          ['IPGP','IPG Photonics','高功率光纤激光器全球龙头,工业端占主导'],
+        ]},
+      { en:'Silicon Photonics & CPO', zh:'硅光与 CPO · 共封装光学取代可插拔,产业链价值重分布',
+        tickers:[
+          ['AVGO','Broadcom','交换机 + 定制 ASIC + 硅光,AI 网络核心供应商'],
+          ['MRVL','Marvell','DPU、DSP、定制硅,自研硅光平台切入 CPO'],
+          ['NVDA','NVIDIA','Rubin 平台原生集成硅光,推动整个产业链升级'],
+          ['MTSI','MACOM','射频与高速模拟芯片,硅光驱动 IC 细分强者'],
+          ['GFS','GlobalFoundries','硅光代工核心产能,收购 AMF 扩大布局'],
+          ['IFNNY','Infineon','功率与传感芯片,激光雷达与通信光电兼顾'],
+        ]},
+      { en:'Test Equipment & Materials', zh:'测试设备与衬底材料 · 产业扩产期的卖水人',
+        tickers:[
+          ['VIAV','Viavi Solutions','光通信测试设备龙头,验证高速模块的必备厂商'],
+          ['IQE','IQE plc','化合物半导体外延片,光通信与无线射频基础材料'],
+          ['AIXA','Aixtron','MOCVD 设备,化合物半导体与光器件制造核心设备'],
+          ['MXL','MaxLinear','宽带通信与数据中心互连芯片'],
+        ]}
+    ]
+  },
+
+  { key:'ai', name:'AI Infrastructure', zh:'人工智能基础设施', tagline:'Manufacturing Intelligence · 智能的制造',
+    intro:'从算力、网络、电力到散热,AI 资本开支超级周期的真实受益者。大厂 Capex 指引是这条链条最硬的锚。',
+    groups:[
+      { en:'Compute & Accelerators', zh:'算力与加速器 · 训练与推理的核心算力',
+        tickers:[
+          ['NVDA','NVIDIA','AI 算力绝对龙头,CUDA 生态护城河深'],
+          ['AMD','Advanced Micro Devices','MI 系列 GPU 追赶中,CPU 端份额稳步扩大'],
+          ['AVGO','Broadcom','谷歌 TPU 合作方,定制 ASIC 业务快速放量'],
+          ['TSM','TSMC','先进制程独家代工,AI 芯片最大瓶颈与受益者'],
+          ['INTC','Intel','Gaudi 系列与代工业务转型,估值修复弹性'],
+        ]},
+      { en:'Networking & Switching', zh:'网络与交换 · 东西向流量爆发,交换机与 DPU 同步扩容',
+        tickers:[
+          ['ANET','Arista Networks','数据中心交换机高端寡头,AI 集群核心赢家'],
+          ['CSCO','Cisco','网络设备老牌,AI 数据中心业务重新加速'],
+          ['MRVL','Marvell','DPU 与定制硅的主要供应商'],
+          ['JNPR','Juniper','被惠普收购进行中,企业网络与 AI 融合叙事'],
+        ]},
+      { en:'Hyperscalers & Cloud', zh:'超大规模云厂商 · AI 资本开支的出资方,也是最终受益者',
+        tickers:[
+          ['MSFT','Microsoft','Azure 与 OpenAI 深度绑定,AI 变现最快的大厂'],
+          ['GOOGL','Alphabet','Gemini 模型 + TPU 自研 + 搜索现金流'],
+          ['AMZN','Amazon','AWS 规模领先,Anthropic 战略合作,Trainium 自研芯片'],
+          ['META','Meta Platforms','Llama 开源生态,AI 驱动广告效率重估'],
+          ['ORCL','Oracle','云业务二次腾飞,数据库 + AI 算力租赁并行'],
+        ]},
+      { en:'Data Center Physical Layer', zh:'数据中心实体层 · REITs、建造、配电、液冷',
+        tickers:[
+          ['DLR','Digital Realty','全球数据中心 REIT 巨头,超大规模客户稳定租约'],
+          ['EQIX','Equinix','互联型数据中心龙头,IBX 平台网络效应'],
+          ['VRT','Vertiv','液冷与配电核心供应商,AI 时代最直接受益者'],
+          ['ETN','Eaton','电气设备与配电系统,数据中心供电链条关键环节'],
+          ['SMCI','Super Micro','AI 服务器系统集成,液冷方案深度绑定英伟达'],
+          ['DELL','Dell','AI 服务器业务爆发,企业客户渠道优势'],
+        ]},
+      { en:'Memory', zh:'存储 · HBM 结构性供不应求,DRAM 周期上行',
+        tickers:[
+          ['MU','Micron Technology','HBM 三巨头之一,AI 驱动 DRAM 超级周期核心受益者'],
+        ]}
+    ]
+  },
+
+  { key:'critmin', name:'Critical Minerals', zh:'关键矿产', tagline:'Materials Powering the Future · 驱动未来的材料',
+    intro:'铜、锂、铀,能源转型与再工业化的物理瓶颈。地缘博弈下,资源端定价权系统性上修。',
+    groups:[
+      { en:'Copper', zh:'铜 · 电气化长期需求与供给刚性的错配',
+        tickers:[
+          ['FCX','Freeport-McMoRan','全球最大铜生产商之一,印尼 Grasberg 矿核心资产'],
+          ['SCCO','Southern Copper','秘鲁与墨西哥低成本露天铜矿,现金流优质'],
+          ['TECK','Teck Resources','转型纯铜标的,QB2 项目放量中'],
+          ['IE','Ivanhoe Electric','美国本土铜资源勘探,地缘溢价受益方'],
+          ['ERO','Ero Copper','巴西中型铜矿,成本曲线左侧'],
+          ['TMQ','Trilogy Metals','阿拉斯加铜锌项目,开发阶段高风险高弹性'],
+        ]},
+      { en:'Lithium & Battery Metals', zh:'锂与电池金属 · 周期筑底,关注成本曲线最左端的生产商',
+        tickers:[
+          ['ALB','Albemarle','全球锂业龙头,成本与规模双重优势'],
+          ['SQM','SQM','智利盐湖提锂龙头,运营成本全球最低之一'],
+          ['LAC','Lithium Americas','Thacker Pass 项目美国本土大型锂资源'],
+          ['PLL','Piedmont Lithium','美国本土硬岩锂项目开发商'],
+        ]},
+      { en:'Uranium', zh:'铀 · AI 电力需求叠加供应缺口,周期上行',
+        tickers:[
+          ['CCJ','Cameco','全球铀矿龙头,西方世界核燃料循环核心'],
+          ['UEC','Uranium Energy','美国本土原地浸出铀矿,政策受益'],
+          ['NXE','NexGen Energy','加拿大阿萨巴斯卡盆地高品位铀项目'],
+          ['DNN','Denison Mines','开发阶段高弹性铀标的'],
+        ]}
+    ]
+  },
+
+  { key:'ree', name:'Rare Earth Elements', zh:'稀土元素', tagline:'The Metals Behind Everything · 万物背后的金属',
+    intro:'供应高度集中,战略属性极强。中国出口管制与美国本土化诉求共振,地缘溢价持续重估。从矿山到磁材,每一环都在重估。',
+    groups:[
+      { en:'Producers & Magnet Makers', zh:'生产商与磁材厂 · 从矿到磁的一体化叙事',
+        tickers:[
+          ['MP','MP Materials','美国唯一运营稀土矿山,苹果签 5 亿美元磁材大单'],
+          ['USAR','USA Rare Earth','Round Top 项目,美国政府持股 10%,专注重稀土'],
+          ['UUUU','Energy Fuels','白梅索工厂处理稀土 + 铀双主业'],
+          ['LYC','Lynas Rare Earths','澳洲龙头,中国以外最大稀土生产商'],
+          ['NEO','Neo Performance Materials','加拿大磁材与稀土加工一体化企业'],
+        ]},
+      { en:'Developers & Explorers', zh:'开发商与勘探者 · 高弹性、高风险、高政策敏感',
+        tickers:[
+          ['CRML','Critical Metals','格陵兰 Tanbreez 项目,盟友供应链叙事核心'],
+          ['ARRN','American Rare Earths','怀俄明州 Halleck Creek 项目开发中'],
+          ['NB','NioCorp','内布拉斯加州铌、钪、稀土综合项目'],
+          ['UAMY','U.S. Antimony','美国锑资源,军用关键矿产'],
+          ['TMRC','Texas Mineral Resources','与 USAR 共同开发 Round Top 项目'],
+          ['TMC','The Metals Company','深海多金属结核开采,含镍钴铜锰'],
+          ['IDR','Idaho Strategic Resources','爱达荷州稀土与黄金项目组合'],
+        ]},
+      { en:'Processing Support', zh:'加工与配套 · 化学品等卖水人环节',
+        tickers:[
+          ['OLN','Olin Corporation','稀土加工所需专用化学品供应商'],
+        ]}
+    ]
+  },
+
+  { key:'solar', name:'Solar Energy', zh:'太阳能', tagline:'Harvesting the Sun · 收获阳光',
+    intro:'成本曲线仍在下行,但赛道内部分化加剧。关注有定价权、现金流质量高的环节,而非全产业链平均受益。',
+    groups:[
+      { en:'U.S. Manufacturers & Inverters', zh:'美国本土制造与逆变器 · IRA 受益方,政策红利明确',
+        tickers:[
+          ['FSLR','First Solar','美国最大组件制造商,薄膜技术与本土产能双优势'],
+          ['ENPH','Enphase Energy','微型逆变器龙头,户用储能整合方案'],
+          ['SEDG','SolarEdge','组串式逆变器与优化器,户用商用并重'],
+          ['ARRY','Array Technologies','地面电站跟踪支架龙头'],
+          ['SHLS','Shoals Technologies','电站电气平衡系统 BOS 细分龙头'],
+          ['NXT','Nextracker','全球最大光伏跟踪支架商,规模优势明显'],
+        ]},
+      { en:'Installers & Residential', zh:'安装商与户用 · 对利率最敏感,关注边际改善',
+        tickers:[
+          ['RUN','Sunrun','美国最大户用光伏安装商'],
+          ['NOVA','Sunnova Energy','户用光伏第三方融资平台'],
+          ['SPWR','SunPower','户用光伏系统集成,高端市场定位'],
+        ]}
+    ]
+  },
+
+  { key:'nuclear', name:'Nuclear Energy', zh:'核能', tagline:'The Future of Energy · 能源的未来',
+    intro:'SMR、铀周期与 AI 电力缺口三重共振。核电从"争议资产"重估为"基础载荷刚需",估值天花板打开。',
+    groups:[
+      { en:'SMR & Next-Gen Reactors', zh:'小型模块化堆与下一代堆 · 故事性感、兑现周期长、波动最大',
+        tickers:[
+          ['SMR','NuScale Power','美国首个获 NRC 认证的 SMR 设计商'],
+          ['OKLO','Oklo','Sam Altman 支持的快堆初创,目标超小型商业化部署'],
+          ['NNE','Nano Nuclear Energy','微堆技术初创,早期高波动标的'],
+          ['LEU','Centrus Energy','美国 HALEU 燃料供应核心方,与下一代堆绑定'],
+          ['BWXT','BWX Technologies','海军核动力与 SMR 核心部件制造'],
+          ['ASPI','ASP Isotopes','同位素生产,医疗与核燃料应用双线'],
+        ]},
+      { en:'Utilities & Operators', zh:'核电运营商 · 现金流扎实,直接对接数据中心 PPA',
+        tickers:[
+          ['CEG','Constellation Energy','美国最大核电运营商,微软 20 年 PPA 签约方'],
+          ['VST','Vistra','核电 + 天然气综合电力商,数据中心大单受益'],
+          ['TLN','Talen Energy','亚马逊 AWS 购电协议的核电卖方'],
+          ['PEG','Public Service Enterprise','新泽西电力龙头,核电资产稳定现金流'],
+          ['D','Dominion Energy','弗吉尼亚数据中心走廊核心电力公司'],
+        ]},
+      { en:'Uranium Miners', zh:'铀矿 · 燃料端供给弹性有限,长协价持续上行',
+        tickers:[
+          ['CCJ','Cameco','全球铀矿龙头'],
+          ['UUUU','Energy Fuels','美国本土铀加工 + 稀土双主业'],
+          ['UEC','Uranium Energy','美国原地浸出铀矿运营商'],
+          ['NXE','NexGen Energy','加拿大高品位铀矿开发商'],
+          ['DNN','Denison Mines','高弹性铀开发标的'],
+        ]}
+    ]
+  },
+
+  { key:'semi', name:'Semiconductors', zh:'半导体', tagline:'The Engine of Progress · 进步的引擎',
+    intro:'设计、设备、代工、存储四条主线节奏各自独立。AI 驱动逻辑芯片,HBM 拉动存储,设备端受扩产与技术节点切换双驱动。',
+    groups:[
+      { en:'Chip Design & Platforms', zh:'芯片设计与平台 · 数据中心、客户端、汽车三条腿',
+        tickers:[
+          ['NVDA','NVIDIA','AI 算力绝对龙头,CUDA 生态壁垒'],
+          ['AMD','AMD','CPU 份额稳步提升,MI 系列追赶 AI 训练市场'],
+          ['AVGO','Broadcom','定制 ASIC + 网络芯片 + 软件三轮驱动'],
+          ['QCOM','Qualcomm','手机基带龙头,AI PC 与边缘 AI 新叙事'],
+          ['INTC','Intel','代工转型进行中,估值与预期双低'],
+          ['ARM','Arm Holdings','IP 授权模式,数据中心与汽车渗透扩张'],
+          ['MRVL','Marvell','定制硅与光通信双主线'],
+        ]},
+      { en:'Foundry', zh:'晶圆代工 · 先进制程寡头,绑定 AI 与手机两大主力客户',
+        tickers:[
+          ['TSM','TSMC','先进制程全球独家,AI + 苹果双客户锁定'],
+          ['GFS','GlobalFoundries','特色工艺代工,硅光与汽车芯片核心产能'],
+          ['UMC','United Microelectronics','成熟制程代工,台积电之外的第二选择'],
+        ]},
+      { en:'Equipment', zh:'设备 · 扩产 + 技术节点升级双重驱动',
+        tickers:[
+          ['ASML','ASML','EUV 光刻机全球独家,先进制程咽喉'],
+          ['AMAT','Applied Materials','沉积与刻蚀设备龙头,全工艺覆盖'],
+          ['LRCX','Lam Research','刻蚀设备专家,存储设备强势'],
+          ['KLAC','KLA','量测与检测设备寡头,高毛利护城河'],
+          ['TER','Teradyne','测试设备,AI 芯片与机器人双轮'],
+        ]},
+      { en:'Memory', zh:'存储 · HBM 供不应求,DRAM 周期上行',
+        tickers:[
+          ['MU','Micron Technology','美系 HBM 唯一标的,AI 超级周期核心受益者'],
+        ]},
+      { en:'Analog & Specialty', zh:'模拟与特种 · 汽车、工业周期,与数字芯片节奏错位',
+        tickers:[
+          ['TXN','Texas Instruments','模拟龙头,工业与汽车终端主导'],
+          ['ADI','Analog Devices','高性能模拟与信号链,高毛利稳定'],
+          ['MCHP','Microchip','MCU 与模拟综合供应商'],
+          ['NXPI','NXP Semiconductors','汽车芯片欧洲龙头,MCU 与连接芯片'],
+          ['ON','ON Semiconductor','电动车功率半导体,SiC 核心玩家'],
+        ]}
+    ]
+  },
+
+  { key:'robots', name:'Humanoid Robots', zh:'人形机器人', tagline:'The Future of Labor · 劳动的未来',
+    intro:'零部件先行,整机后至。关注谐波减速器、丝杠、视觉传感与执行器供应链。2026 是量产元年,主机厂订单是关键信号。',
+    groups:[
+      { en:'OEMs & Platforms', zh:'整机与平台 · 叙事驱动,量产节奏是关键分水岭',
+        tickers:[
+          ['TSLA','Tesla','Optimus V3 量产元年,内部工厂自消化打开长期空间'],
+          ['NVDA','NVIDIA','Isaac Sim 仿真平台,机器人 AI 基础设施方'],
+          ['RR','Richtech Robotics','小市值人形机器人初创,Dex 产品商业化'],
+          ['SERV','Serve Robotics','配送机器人,轮式自主移动细分龙头'],
+        ]},
+      { en:'Components & Actuators', zh:'零部件与执行器 · 谐波减速器、丝杠、轴承、电机等卡脖子环节',
+        tickers:[
+          ['RBC','RBC Bearings','高精度轴承,机器人关节核心部件'],
+          ['PH','Parker Hannifin','流体控制与执行器,工业机器人传统供应商'],
+          ['ROK','Rockwell Automation','工业自动化龙头,软件 + 硬件双布局'],
+          ['SYM','Symbotic','仓储机器人系统集成,沃尔玛独家合作'],
+        ]},
+      { en:'Vision & Sensing', zh:'视觉与感知 · 边缘 AI、激光雷达、高精度传感',
+        tickers:[
+          ['AMBA','Ambarella','边缘 AI 视觉芯片,低延迟感知核心'],
+          ['OUST','Ouster','工业激光雷达龙头,机器人专用市场占位'],
+          ['HSAI','Hesai Group','中国激光雷达龙头,多家人形机器人合作'],
+          ['MBLY','Mobileye','自动驾驶视觉老牌,感知软硬一体'],
+        ]},
+      { en:'Supply Chain Enablers', zh:'上游材料与电源 · 稀土磁材、电池、功率半导体',
+        tickers:[
+          ['MP','MP Materials','磁材必需的稀土原料,量产核心瓶颈'],
+          ['ALB','Albemarle','机器人电池所需锂资源供应商'],
+        ]}
+    ]
+  }
+];
+
+const grid = document.getElementById('grid');
+const backdrop = document.getElementById('backdrop');
+const panel = document.getElementById('panel');
+const panelClose = document.getElementById('panelClose');
+const panelEyebrow = document.getElementById('panelEyebrow');
+const panelTitle = document.getElementById('panelTitle');
+const panelIntro = document.getElementById('panelIntro');
+const panelBody = document.getElementById('panelBody');
+
+// Count total tickers
+let totalTickers = 0;
+themes.forEach(t => t.groups.forEach(g => totalTickers += g.tickers.length));
+
+document.getElementById('themeCount').textContent = String(themes.length).padStart(2, '0');
+document.getElementById('tickerCount').textContent = totalTickers;
+
+themes.forEach((t, i) => {
+  const n = t.groups.reduce((s, g) => s + g.tickers.length, 0);
+  const btn = document.createElement('button');
+  btn.className = 'theme-btn';
+  btn.style.animationDelay = `${0.04 * i}s`;
+  btn.dataset.key = t.key;
+  btn.innerHTML = `
+    <div class="theme-arrow">↗</div>
+    <div>
+      <div class="theme-num">Theme / ${String(i + 1).padStart(2, '0')}</div>
+      <div class="theme-name">${t.name}<span class="zh">${t.zh}</span></div>
+    </div>
+    <div>
+      <div class="theme-tagline">${t.tagline}</div>
+      <div class="theme-meta">
+        <span class="theme-count">${t.groups.length} 子类 · ${n} 标的</span>
+        <span>VIEW →</span>
+      </div>
+    </div>
+  `;
+  btn.addEventListener('click', () => openTheme(t, i, btn));
+  grid.appendChild(btn);
+});
+
+function openTheme(theme, index, btn) {
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  panelEyebrow.textContent = `Theme / ${String(index + 1).padStart(2, '0')} · ${theme.tagline}`;
+  panelTitle.textContent = `${theme.name} · ${theme.zh}`;
+  panelIntro.textContent = theme.intro;
+  panelBody.innerHTML = theme.groups.map(g => `
+    <div class="category">
+      <div class="category-name">${g.en}</div>
+      <div class="category-zh">${g.zh}</div>
+      <div class="tickers">
+        ${g.tickers.map(([sym, name, desc]) => `
+          <div class="ticker">
+            <span class="ticker-sym">$${sym}</span>
+            <div class="ticker-body">
+              <span class="ticker-name">${name}</span>
+              <span class="ticker-desc">${desc}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+  backdrop.classList.add('open');
+  panel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  panelBody.scrollTop = 0;
+}
+
+function closePanel() {
+  backdrop.classList.remove('open');
+  panel.classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+}
+
+panelClose.addEventListener('click', closePanel);
+backdrop.addEventListener('click', closePanel);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePanel();
+});
+</script>
+</body>
+</html>
