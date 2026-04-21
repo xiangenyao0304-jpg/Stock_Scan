@@ -9,6 +9,22 @@ const MARKETS = [
   { key: 'themes', label: '主题股' },
 ]
 
+const RAW_API_BASE = (import.meta.env.VITE_API_BASE || '').trim()
+const API_BASE = RAW_API_BASE.replace(/\/+$/, '')
+const THEMES_URL = new URL('themes.html', window.location.origin + import.meta.env.BASE_URL).toString()
+
+function buildApiUrl(path, params = {}) {
+  const pathname = path.startsWith('/') ? path : `/${path}`
+  const base = API_BASE || window.location.origin
+  const url = new URL(`${base}${pathname}`)
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== '') {
+      url.searchParams.set(key, value)
+    }
+  })
+  return url.toString()
+}
+
 export default function App() {
   const [mode, setMode] = useState('momentum')
   const [market, setMarket] = useState(() => {
@@ -55,7 +71,7 @@ export default function App() {
     setLoadingScan(true)
     setScanError('')
     try {
-      const res = await fetch(`/api/scan?market=${market}`, {
+      const res = await fetch(buildApiUrl('/api/scan', { market }), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(momentumCfg),
@@ -74,7 +90,7 @@ export default function App() {
     setLoadingHmm(true)
     setHmmError('')
     try {
-      const res = await fetch(`/api/hmm_scan?market=${market}`, {
+      const res = await fetch(buildApiUrl('/api/hmm_scan', { market }), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(hmmCfg),
@@ -94,7 +110,7 @@ export default function App() {
     setLoadingKline(true)
     setKlineError('')
     try {
-      const res = await fetch(`/api/kline?code=${encodeURIComponent(item.code)}&market=${market}`)
+      const res = await fetch(buildApiUrl('/api/kline', { code: item.code, market }))
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
       const bars = Array.isArray(data) ? data : (data.bars || [])
@@ -177,7 +193,7 @@ export default function App() {
           </div>
           <a
             className="theme-toggle"
-            href="/themes.html"
+            href={THEMES_URL}
             target="_blank"
             rel="noreferrer"
             title="主题投资名单"
